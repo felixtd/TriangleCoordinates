@@ -21,14 +21,18 @@
 		</Grid.ColumnDefinitions>
 
 		<StackPanel Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Orientation="Horizontal">
-			<Label x:Name="X" Content="X (column):" HorizontalAlignment="Left" Margin="5,10" VerticalAlignment="Center"/>
+			<Label x:Name="X" Content="X (column: 1 - 12):" HorizontalAlignment="Left" Margin="5,10" VerticalAlignment="Center"/>
 			<TextBox x:Name="tbX" HorizontalAlignment="Left" Height="23" Margin="5,10" VerticalAlignment="Center" Width="38"/>
-			<Label x:Name="Y" Content="Y (row):" HorizontalAlignment="Left" Margin="5,10" VerticalAlignment="Center"/>
+			<Label x:Name="Y" Content="Y (row: A - F):" HorizontalAlignment="Left" Margin="5,10" VerticalAlignment="Center"/>
 			<TextBox x:Name="tbY" HorizontalAlignment="Left" Height="23" Margin="5,10" VerticalAlignment="Center" Width="38"/>
 		</StackPanel>
 
-		<Button Grid.Row="0" Grid.Column="3" x:Name="btnGo" Content="Vertices" HorizontalAlignment="Left" Margin="5,10" VerticalAlignment="Center" Width="75" Click="OnComputeVertices" Height="31"/>
-		<Label Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="4" x:Name="labelV1" Content="Result..." HorizontalAlignment="Left" Margin="5,10" VerticalAlignment="Center" Width="433"/>
+		<Button Grid.Row="0" Grid.Column="3" x:Name="btnGo" Content="Compute Vertices" 
+				HorizontalAlignment="Left" Margin="5,10" VerticalAlignment="Center" 
+				Width="110" Click="OnComputeVertices" Height="31"/>
+		<Label Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="4" x:Name="labelV1" 
+			   Content="Result..." HorizontalAlignment="Left" Margin="5,10" 
+			   VerticalAlignment="Center" Width="433"/>
 
 		<StackPanel Grid.Row="2" Grid.Column="0" Orientation="Vertical" VerticalAlignment="Center" IsEnabled="False">
 			<StackPanel Orientation="Horizontal">

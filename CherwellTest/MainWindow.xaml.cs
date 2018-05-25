@@ -27,7 +27,9 @@ namespace CherwellTest
 
 		private void OnComputeVertices(object sender, RoutedEventArgs e)
 		{
-			var triangle = new Triangle(int.Parse(tbX.Text), int.Parse(tbY.Text));
+			var row = tbY.Text.First().ToRowInt();
+			var triangle = new Triangle(int.Parse(tbX.Text), row);
+
 			triangle.ComputeCoordinates();
 			this.labelV1.Content = $"Coordinates: {triangle.ToString()}";
 
@@ -38,9 +40,9 @@ namespace CherwellTest
 			this.tbV3x.Text = triangle.V3.X.ToString();
 			this.tbV3y.Text = triangle.V3.Y.ToString();
 
-			this.labelRowCol.Content = $"Column (X): {triangle.VertexToColumn(triangle.V2)} : Row (Y): {triangle.VertexToRow(triangle.V2)}";
+			this.labelRowCol.Content = $"Column (X): {triangle.VertexToColumn(triangle.V2)} : Row (Y): {triangle.VertexToRow(triangle.V2).ToRowChar()}";
 
-			if (triangle.VertexToColumn(triangle.V2) == int.Parse(tbX.Text) && triangle.VertexToRow(triangle.V2) == int.Parse(tbY.Text))
+			if (triangle.VertexToColumn(triangle.V2) == int.Parse(tbX.Text) && triangle.VertexToRow(triangle.V2) == tbY.Text.First().ToRowInt())
 			{
 				labelSuccess.Content = "Success";
 			}
@@ -50,15 +52,15 @@ namespace CherwellTest
 			}
 		}
 
-		private void OnComputeRowColumn(object sender, RoutedEventArgs e)
-		{
-			this.tbV1x.Text = string.Empty;
-			this.tbV1y.Text = string.Empty;
-			this.tbV3x.Text = string.Empty;
-			this.tbV3y.Text = string.Empty;
+		//private void OnComputeRowColumn(object sender, RoutedEventArgs e)
+		//{
+		//	this.tbV1x.Text = string.Empty;
+		//	this.tbV1y.Text = string.Empty;
+		//	this.tbV3x.Text = string.Empty;
+		//	this.tbV3y.Text = string.Empty;
 
-			var v2 = new Point(int.Parse(tbV2x.Text), int.Parse(tbV2y.Text));
-			//this.labelRowCol.Content = $"Column (X): {v2.VertexToColumn(v2.V2)} : Row (Y): {triangle.VertexToRow(triangle.V2)}";
-		}
+		//	var v2 = new Point(int.Parse(tbV2x.Text), int.Parse(tbV2y.Text));
+		//	//this.labelRowCol.Content = $"Column (X): {v2.VertexToColumn(v2.V2)} : Row (Y): {triangle.VertexToRow(triangle.V2)}";
+		//}
 	}
 }
