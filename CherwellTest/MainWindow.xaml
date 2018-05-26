@@ -6,12 +6,18 @@
         xmlns:local="clr-namespace:CherwellTest"
         mc:Ignorable="d"
         Title="MainWindow" Height="300" Width="750">
+	
+	<Window.DataContext>
+		<local:MainWindowViewModel />
+	</Window.DataContext>
+	
     <Grid>
 		<Grid.RowDefinitions>
 			<RowDefinition Height="*" />
 			<RowDefinition Height="*" />
 			<RowDefinition Height="*" />
 			<RowDefinition Height="*" />
+			<RowDefinition Height="2*" />
 		</Grid.RowDefinitions>
 		<Grid.ColumnDefinitions>
 			<ColumnDefinition Width="*" />
@@ -22,35 +28,35 @@
 
 		<StackPanel Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Orientation="Horizontal">
 			<Label x:Name="X" Content="X (column: 1 - 12):" HorizontalAlignment="Left" Margin="5,10" VerticalAlignment="Center"/>
-			<TextBox x:Name="tbX" HorizontalAlignment="Left" Height="23" Margin="5,10" VerticalAlignment="Center" Width="38"/>
+			<TextBox x:Name="tbX" Text="{Binding InputX, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Height="23" Margin="5,10" VerticalAlignment="Center" Width="38"/>
 			<Label x:Name="Y" Content="Y (row: A - F):" HorizontalAlignment="Left" Margin="5,10" VerticalAlignment="Center"/>
-			<TextBox x:Name="tbY" HorizontalAlignment="Left" Height="23" Margin="5,10" VerticalAlignment="Center" Width="38"/>
+			<TextBox x:Name="tbY" Text="{Binding InputY, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Height="23" Margin="5,10" VerticalAlignment="Center" Width="38"/>
 		</StackPanel>
 
 		<Button Grid.Row="0" Grid.Column="3" x:Name="btnGo" Content="Compute Vertices" 
 				HorizontalAlignment="Left" Margin="5,10" VerticalAlignment="Center" 
-				Width="110" Click="OnComputeVertices" Height="31"/>
+				Width="110" Command="{Binding ComputeVertices}" Height="31"/>
 		<Label Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="4" x:Name="labelV1" 
-			   Content="Result..." HorizontalAlignment="Left" Margin="5,10" 
+			   Content="{Binding TriangleResult}" HorizontalAlignment="Left" Margin="5,10" 
 			   VerticalAlignment="Center" Width="433"/>
 
 		<StackPanel Grid.Row="2" Grid.Column="0" Orientation="Vertical" VerticalAlignment="Center" IsEnabled="False">
 			<StackPanel Orientation="Horizontal">
 				<Label x:Name="V1" Content="V1:" HorizontalAlignment="Left" Margin="2" VerticalAlignment="Center"/>
 				<Label x:Name="V1X" Content="X:" HorizontalAlignment="Left" Margin="2" VerticalAlignment="Center"/>
-				<TextBox x:Name="tbV1x" HorizontalAlignment="Left" Height="23" Margin="2" VerticalAlignment="Center" Width="38"/>
+				<TextBox x:Name="tbV1x" Text="{Binding V1X}" HorizontalAlignment="Left" Height="23" Margin="2" VerticalAlignment="Center" Width="38"/>
 				<Label x:Name="V1Y" Content="Y:" HorizontalAlignment="Left" Margin="2" VerticalAlignment="Center"/>
-				<TextBox x:Name="tbV1y" HorizontalAlignment="Left" Height="23" Margin="2" VerticalAlignment="Center" Width="38"/>
+				<TextBox x:Name="tbV1y" Text="{Binding V1Y}" HorizontalAlignment="Left" Height="23" Margin="2" VerticalAlignment="Center" Width="38"/>
 			</StackPanel>
 		</StackPanel>
 
-		<StackPanel Grid.Row="2" Grid.Column="1" Orientation="Vertical" VerticalAlignment="Center">
+		<StackPanel Grid.Row="2" Grid.Column="1" Orientation="Vertical" VerticalAlignment="Center" IsEnabled="False">
 			<StackPanel Orientation="Horizontal">
 				<Label x:Name="V2" Content="V2:" HorizontalAlignment="Left" Margin="2" VerticalAlignment="Center"/>
 				<Label x:Name="V2X" Content="X:" HorizontalAlignment="Left" Margin="2" VerticalAlignment="Center"/>
-				<TextBox x:Name="tbV2x" HorizontalAlignment="Left" Height="23" Margin="2" VerticalAlignment="Center" Width="38"/>
+				<TextBox x:Name="tbV2x" Text="{Binding V2X}" HorizontalAlignment="Left" Height="23" Margin="2" VerticalAlignment="Center" Width="38"/>
 				<Label x:Name="V2Y" Content="Y:" HorizontalAlignment="Left" Margin="2" VerticalAlignment="Center"/>
-				<TextBox x:Name="tbV2y" HorizontalAlignment="Left" Height="23" Margin="2" VerticalAlignment="Center" Width="38"/>
+				<TextBox x:Name="tbV2y" Text="{Binding V2Y}" HorizontalAlignment="Left" Height="23" Margin="2" VerticalAlignment="Center" Width="38"/>
 			</StackPanel>
 		</StackPanel>
 
@@ -58,23 +64,29 @@
 			<StackPanel Orientation="Horizontal">
 				<Label x:Name="V3" Content="V3:" HorizontalAlignment="Left" Margin="2" VerticalAlignment="Center"/>
 				<Label x:Name="V3X" Content="X:" HorizontalAlignment="Left" Margin="2" VerticalAlignment="Center"/>
-				<TextBox x:Name="tbV3x" HorizontalAlignment="Left" Height="23" Margin="2" VerticalAlignment="Center" Width="38"/>
+				<TextBox x:Name="tbV3x" Text="{Binding V3X}" HorizontalAlignment="Left" Height="23" Margin="2" VerticalAlignment="Center" Width="38"/>
 				<Label x:Name="V3Y" Content="Y:" HorizontalAlignment="Left" Margin="2" VerticalAlignment="Center"/>
-				<TextBox x:Name="tbV3y" HorizontalAlignment="Left" Height="23" Margin="2" VerticalAlignment="Center" Width="38"/>
+				<TextBox x:Name="tbV3y" Text="{Binding V3Y}" HorizontalAlignment="Left" Height="23" Margin="2" VerticalAlignment="Center" Width="38"/>
 			</StackPanel>
 		</StackPanel>
 	
-		<!--<Button Grid.Row="2" Grid.Column="3" x:Name="btnComputeRowCol" 
-				Content="Row/Column" HorizontalAlignment="Left" Margin="5,10" VerticalAlignment="Center" 
-				Width="75" Height="31" Click="OnComputeRowColumn"/>-->
 		<Label Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="3" 
-			   x:Name="labelRowCol" Content="Result..." 
+			   x:Name="labelRowCol" Content="{Binding RowColResult}" 
 			   HorizontalAlignment="Left" Margin="5,10" 
 			   VerticalAlignment="Center" Width="433"/>
 		<Label Grid.Row="3" Grid.Column="3"
-			   x:Name="labelSuccess" 
+			   x:Name="labelSuccess"
+			   Content="{Binding Success}"
 			   Foreground="Red"
 			   HorizontalAlignment="Left" Margin="5,10" 
 			   VerticalAlignment="Center"/>
+
+		<Border Grid.Row="4" Grid.ColumnSpan="4" Margin="2" BorderBrush="Red" BorderThickness="2">
+			<TextBlock x:Name="Instructions"
+				   Margin="5,0"
+				   TextWrapping="Wrap"
+				   FontSize="14"
+				   Text="{Binding Explanation, Mode=OneTime}"></TextBlock>
+		</Border>
 	</Grid>
 </Window>
