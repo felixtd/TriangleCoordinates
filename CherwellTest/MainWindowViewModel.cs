@@ -67,8 +67,8 @@ namespace CherwellTest
 				return string.Format("{0}{1}{2}{3}",
 					"Enter column (1 - 12) and row (A - F) and click \"Compute Vertices\".\n",
 					"The vertices are then computed for the triangle at that column and row.\n",
-					"The computed triangle is then used to compute the row and column and\n",
-					"that computed row and column are checked against the user entered values.");
+					"The computed triangle is then used to re-compute the row and column and\n",
+					"the result is checked against the user entered values.");
 			}
 		}
 
@@ -180,7 +180,7 @@ namespace CherwellTest
 
 			if (triangle.VertexToColumn(triangle.V2) == InputX && triangle.VertexToRow(triangle.V2) == InputY.Value.ToRowInt())
 			{
-				Success = "Success";
+				Success = "Values Match!";
 			}
 			else
 			{
